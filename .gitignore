@@ -1,5 +1,8 @@
+secrets/
+
 node_modules/**/*
 .expo/*
+android/.expo/
 npm-debug.*
 *.jks
 *.p12
