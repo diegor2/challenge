@@ -1,18 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import initializeFirebase from './firebase/init'
+//import initializeFirebase from 'firebase/init'
+import LoginScreen from './auth/LoginScreen'
 
 export default class App extends React.Component {
 
-  componentDidMount(){
-    initializeFirebase()
+  async componentWillMount() {
+    await Expo.Font.loadAsync({
+      'Roboto': require('native-base/Fonts/Roboto.ttf'),
+      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+    });
   }
-  
+
+  componentDidMount(){
+  //  initializeFirebase()
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <LoginScreen/>
     );
   }
 }
