@@ -4,7 +4,6 @@ import { Facebook } from 'expo';
 import { appId } from '../secrets/facebook'
 
 export async function loginWithFacebook(callback){
-
   const options = {}
   const result = await Expo.Facebook.logInWithReadPermissionsAsync(appId, options)
 

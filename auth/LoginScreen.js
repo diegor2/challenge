@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { StatusBar, Alert } from 'react-native';
 import { Root, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Form, Item, Input, Label, Toast } from 'native-base';
 
-import { loginWithFacebook } from './auth'
+import FacebookLoginButton from './FacebookLoginButton'
 
-export default class AnatomyExample extends Component {
+export default class LoginScreen extends Component {
   render() {
     return (
       <Root>
@@ -42,11 +42,14 @@ export default class AnatomyExample extends Component {
               <Text>Entrar usando e-mail</Text>
             </Button>
 
-            <Button iconLeft
-              onPress={this._facebook}>
-              <Icon name='logo-facebook' />
-              <Text>Entrar com Facebook</Text>
-            </Button>
+            <FacebookLoginButton
+              onSuccess={() => {
+                Toast.show({text: 'Sucesso!'})
+              }}
+              onError={error => {
+                Toast.show({text: `Erro! ${error}`})
+              }}
+            />
           </Content>
           <Footer>
             <FooterTab>
@@ -58,18 +61,5 @@ export default class AnatomyExample extends Component {
         </Container>
       </Root>
     );
-  }
-
-  _facebook = () => {
-    loginWithFacebook(
-      {
-        onSuccess: () => {
-          Toast.show({text: 'Sucesso!'})
-        },
-        onError: error => {
-          Toast.show({text: `Erro! ${error}`})
-        },
-      }
-    )
   }
 }
