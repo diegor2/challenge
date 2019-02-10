@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Root } from 'react-native';
 import { AppLoading, Font } from 'expo';
 
 import initializeFirebase from './firebase/init'
