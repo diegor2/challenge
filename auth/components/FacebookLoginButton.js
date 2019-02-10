@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Icon, Text } from 'native-base';
 
-import { loginWithFacebook } from './auth'
+import { loginWithFacebook } from '../auth'
 
 export default class FacebookLoginButton extends Component {
   render(){

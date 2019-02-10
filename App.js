@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Root } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Root } from 'native-base'
 import { AppLoading, Font } from 'expo';
 
 import initializeFirebase from './firebase/init'
-import LoginScreen from './auth/LoginScreen'
+import LoginScreen from './auth/components/LoginScreen'
 
 export default class App extends React.Component {
 
@@ -14,7 +15,9 @@ export default class App extends React.Component {
   render() {
     if(this.state.ready) {
       return (
-        <LoginScreen/>
+        <Root>
+          <LoginScreen/>
+        </Root>
       )
     } else {
       return (
