@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Keyboard } from 'react-native';
 import { Button, Icon, Text, Form, Item, Input, Label } from 'native-base';
 
 import { createUserWithEmail, loginWithEmail } from '../auth'
@@ -8,7 +8,7 @@ export default class EmailAndPasswordForm extends Component {
 
   state = {
     user: '',
-    password: ''
+    password: '',
   };
 
   render(){
@@ -27,12 +27,12 @@ export default class EmailAndPasswordForm extends Component {
             </Item>
           </Form>
 
-          <Button iconLeft warning onPress={this._create}>
+          <Button iconLeft full warning onPress={this._create}>
             <Icon name='person-add' />
             <Text>Criar conta usando e-mail e senha</Text>
           </Button>
 
-          <Button iconLeft success onPress={this._login}>
+          <Button iconLeft full success onPress={this._login}>
             <Icon name='key' />
             <Text>Entrar usando e-mail e senha</Text>
           </Button>
@@ -41,6 +41,7 @@ export default class EmailAndPasswordForm extends Component {
   }
 
   _create = () => {
+    Keyboard.dismiss()
     createUserWithEmail(
       this.state.user,
       this.state.password,
@@ -52,6 +53,7 @@ export default class EmailAndPasswordForm extends Component {
   }
 
   _login = () => {
+    Keyboard.dismiss()
     loginWithEmail(
       this.state.user,
       this.state.password,

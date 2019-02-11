@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
 import { StatusBar, View } from 'react-native';
-import { Root, Container, Content, Toast } from 'native-base';
+import { Root, Container, Content } from 'native-base';
 
 import LoginHeader from './LoginHeader'
 import EmailAndPasswordForm from './EmailAndPasswordForm'
 import FacebookLoginButton from './FacebookLoginButton'
+import LoginFooter from './LoginFooter'
 
 export default class LoginScreen extends Component {
-  // Should use Toast for both, in most cases it doesn't work with mail login.
+  state = {
+    success: false,
+    result: ''
+  }
   render() {
     return (
         <Container>
           <StatusBar hidden />
           <LoginHeader/>
-            <Content>
-              <View>
-                  <EmailAndPasswordForm
-                    onSuccess={() => alert('Sucesso!')}
-                    onError={error => alert(`Erro! ${error}`)}/>
-                  <FacebookLoginButton
-                    onSuccess={() => Toast.show({text: 'Sucesso!', type: "success"})}
-                    onError={error => Toast.show({text: `Erro! ${error}`, type: 'warning'})}/>
-                </View>
-            </Content>
+          <Content>
+            <View>
+              <EmailAndPasswordForm
+                onSuccess={() => this.setState({result: 'Sucesso!', success: true})}
+                onError={error => this.setState({result: `Erro! ${error}`, success: false})}/>
+              <FacebookLoginButton
+                onSuccess={() => this.setState({result: 'Sucesso!', success: true})}
+                onError={error => this.setState({result: `Erro! ${error}`, success: false})}/>
+            </View>
+          </Content>
+          <LoginFooter message={this.state.result} success={this.state.success}/>
         </Container>
     );
   }

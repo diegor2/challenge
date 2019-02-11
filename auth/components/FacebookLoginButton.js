@@ -6,7 +6,7 @@ import { loginWithFacebook } from '../auth'
 export default class FacebookLoginButton extends Component {
   render(){
     return (
-      <Button iconLeft
+      <Button iconLeft full
         onPress={this._login}>
         <Icon name='logo-facebook' />
         <Text>Entrar com Facebook</Text>
