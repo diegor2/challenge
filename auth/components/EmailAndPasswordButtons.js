@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Keyboard } from 'react-native';
-import { Button, Icon, Text, Form, Item, Input, Label } from 'native-base';
+import { View, Button, Icon, Text } from 'native-base';
 
 import { createUserWithEmail, loginWithEmail } from '../auth'
 

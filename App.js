@@ -1,6 +1,6 @@
 import React from 'react';
 import { Root } from 'native-base';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, YellowBox } from 'react-native';
 import { AppLoading, Font } from 'expo';
 
 import initializeFirebase from './firebase/init'
@@ -33,6 +33,10 @@ export default class App extends React.Component {
       'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
     });
     initializeFirebase()
+
+    // Suppress firebase warnings
+    // https://github.com/firebase/firebase-js-sdk/issues/97
+    YellowBox.ignoreWarnings(['Setting a timer']);
   }
 
 }

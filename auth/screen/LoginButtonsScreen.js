@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Root, Container, Content, Button, Text } from 'native-base';
+import { Root, Container, Content, View, Button, Text } from 'native-base';
 
 import EmailAndPasswordButtons from '../components/EmailAndPasswordButtons'
 import FacebookLoginButton from '../components/FacebookLoginButton'

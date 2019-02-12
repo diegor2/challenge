@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Toast} from 'native-base';
+import { Toast } from 'native-base';
 
 import EmailAndPasswordForm from '../components/EmailAndPasswordForm'
 

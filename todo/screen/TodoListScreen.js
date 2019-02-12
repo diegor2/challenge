@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Root, Container, Content, Button, Text } from 'native-base';
+import { Container, View, Fab, Icon, Item, Input } from 'native-base';
+import { Keyboard } from 'react-native';
+
+import CreateTaskComponent from '../components/CreateTaskComponent'
 
 export default class TodoListScreen extends Component {
 
@@ -8,7 +10,20 @@ export default class TodoListScreen extends Component {
     title: 'Lista de Tarefas',
   }
 
+  state = {
+    newTask: '',
+  }
+
   render() {
-    return null
+    return(
+      <Container>
+        <View>
+          <CreateTaskComponent/>
+        </View>
+        <Fab onPress={this._create}>
+            <Icon name="create" />
+        </Fab>
+      </Container>
+    )
   }
 }
