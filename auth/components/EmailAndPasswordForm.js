@@ -12,6 +12,8 @@ export default class EmailAndPasswordForm extends Component {
   };
 
   render(){
+    const mode = this.props.navigation.getParam('mode', '');
+
     return (
       <View>
           <Form>
@@ -27,37 +29,29 @@ export default class EmailAndPasswordForm extends Component {
             </Item>
           </Form>
 
-          <Button iconLeft full warning onPress={this._create}>
-            <Icon name='person-add' />
-            <Text>Criar conta usando e-mail e senha</Text>
-          </Button>
-
-          <Button iconLeft full success onPress={this._login}>
-            <Icon name='key' />
-            <Text>Entrar usando e-mail e senha</Text>
+          <Button iconLeft full success
+            onPress={(mode === 'create') ? this._create : this._login}>
+            <Icon name='checkmark' />
+            <Text>{(mode === 'create') ? 'Criar' : 'Entrar'}</Text>
           </Button>
         </View>
     )
   }
 
   _create = () => {
+    const {user, password} = this.state
     Keyboard.dismiss()
-    createUserWithEmail(
-      this.state.user,
-      this.state.password,
-      {
-        onSuccess: this.props.onSuccess,
+    createUserWithEmail(user, password, {
+        onSuccess: this._login,
         onError: this.props.onError
       },
     )
   }
 
   _login = () => {
+    const {user, password} = this.state
     Keyboard.dismiss()
-    loginWithEmail(
-      this.state.user,
-      this.state.password,
-      {
+    loginWithEmail(user, password, {
         onSuccess: this.props.onSuccess,
         onError: this.props.onError
       },
