@@ -1,27 +1,19 @@
 import React, { PureComponent } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+// import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text, Icon, Left, Body, Right, Switch, Button } from 'native-base';
 
 export default class TodoListItem extends PureComponent {
-  // _onPress = () => {
-  //   this.props.onPressItem(this.props.id);
-  // };
-
   render() {
-    // const textColor = this.props.selected ? 'red' : 'black';
     return (
-      <TouchableOpacity>
-        <View>
-          <Text style={styles.item}>{this.props.title}</Text>
-        </View>
-      </TouchableOpacity>
+      <ListItem>
+        <Left>
+          <Text>{this.props.item.task}</Text>
+        </Left>
+        <Right>
+          <Icon active name="trash"
+            onPress={() => this.props.onDelete(this.props.item.id)}/>
+        </Right>
+      </ListItem>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-})

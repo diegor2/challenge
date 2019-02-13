@@ -21,7 +21,7 @@ export default class TodoListScreen extends Component {
           <CreateTaskComponent/>
           <TodoListComponent/>
         <Fab onPress={this._create}>
-            <Icon name="create" />
+            <Icon name="add" />
         </Fab>
       </Container>
     )

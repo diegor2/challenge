@@ -13,6 +13,11 @@ export function watchTodoList(onListChanged) {
   });
 }
 
+export function removeTodo(id) {
+  var user = firebase.auth().currentUser.uid;
+  firebase.database().ref(`users/${user}/tasks/${id}`).remove()
+}
+
 _extractTodoListFromSnapshot = snapshot => {
   const tasks = snapshot.val()
   return Object.keys(tasks).map(key => ({id: key, task: tasks[key].task}))
