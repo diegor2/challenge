@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { addTodo, watchTodoList } from '../storage'
+import TodoListItem from './TodoListItem'
 
-export default class TodoListComponent extends Component {
+export default class TodoListComponent extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -14,31 +15,24 @@ export default class TodoListComponent extends Component {
     todoList: []
   }
 
-
   render() {
-    const list = this.state.todoList
-
     return (
       <View style={styles.container}>
         <FlatList
-          data={list}
+          data={this.state.todoList}
           keyExtractor={(item, index) => item.id}
           renderItem={this._renderItem} />
       </View>
     )
   }
 
-  _renderItem = ({item}) => <Text style={styles.item}>{item.task}</Text>
+  _renderItem = ({item}) => <TodoListItem title={item.task}/>
+
 }
 
 const styles = StyleSheet.create({
   container: {
    flex: 1,
    paddingTop: 22
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
+  }
 })
