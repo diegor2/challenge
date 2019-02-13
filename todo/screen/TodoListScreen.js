@@ -12,18 +12,21 @@ export default class TodoListScreen extends Component {
   }
 
   state = {
-    newTask: '',
+    newTask: false,
   }
 
   render() {
     return(
       <Container>
-          <CreateTaskComponent/>
-          <TodoListComponent/>
-        <Fab onPress={this._create}>
+        {this._renderCreateTask()}
+        <TodoListComponent/>
+        <Fab onPress={this._toggleCreateTask}>
             <Icon name="add" />
         </Fab>
       </Container>
     )
   }
+
+  _toggleCreateTask = () => this.setState({newTask: !this.state.newTask})
+  _renderCreateTask = () => this.state.newTask ? <CreateTaskComponent/> : null
 }
