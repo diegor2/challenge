@@ -6,14 +6,12 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import LoginButtonsScreen from '../auth/screen/LoginButtonsScreen'
 import LoginFormScreen from '../auth/screen/LoginFormScreen'
 import TodoListScreen from '../todo/screen/TodoListScreen'
-import TodoDetailsScreen from '../todo/screen/TodoDetailsScreen'
 
 const AppNavigator = createStackNavigator(
   {
     LoginButtons: LoginButtonsScreen,
     LoginForm: LoginFormScreen,
     TodoList: TodoListScreen,
-    TodoDetails: TodoDetailsScreen
   },
   {
     initialRouteName: 'LoginButtons',

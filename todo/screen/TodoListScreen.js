@@ -3,6 +3,7 @@ import { Container, View, Fab, Icon, Item, Input } from 'native-base';
 import { Keyboard } from 'react-native';
 
 import CreateTaskComponent from '../components/CreateTaskComponent'
+import TodoListComponent from '../components/TodoListComponent'
 
 export default class TodoListScreen extends Component {
 
@@ -17,9 +18,8 @@ export default class TodoListScreen extends Component {
   render() {
     return(
       <Container>
-        <View>
           <CreateTaskComponent/>
-        </View>
+          <TodoListComponent/>
         <Fab onPress={this._create}>
             <Icon name="create" />
         </Fab>
