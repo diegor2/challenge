@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "br.net.ruggeri.challenge"
+    },
+    "android": {
+      "package": "br.net.ruggeri.challenge"
     }
   }
 }

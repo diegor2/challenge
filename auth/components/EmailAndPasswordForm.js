@@ -19,13 +19,16 @@ export default class EmailAndPasswordForm extends Component {
           <Form>
             <Item stackedLabel>
               <Label>E-mail</Label>
-              <Input onChangeText={text => this.setState({user:text})} />
+              <Input
+                onChangeText={text => this.setState({user:text})}
+                returnKeyType='next'/>
             </Item>
             <Item stackedLabel last>
               <Label>Senha</Label>
               <Input
                 secureTextEntry={true}
-                onChangeText={text => this.setState({password:text})} />
+                onChangeText={text => this.setState({password:text})}
+                returnKeyType='done'/>
             </Item>
           </Form>
 

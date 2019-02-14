@@ -12,10 +12,11 @@ export default class EditTaskComponent extends Component {
     const id = this.props.item.id
     return (
       <TaskInputComponent
+        item={this.props.item}
         onComplete={this.props.onComplete}
         onCancel={this.props.onComplete}
         onSubmit={task => editTodo(id, task)}
         icon='checkmark' />
     )
-  }  
+  }
 }
