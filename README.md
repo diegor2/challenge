@@ -4,13 +4,14 @@
 
 ### Setup Facebook app
 
-Then follow the instructions for "The Expo client app" on [this](https://docs.expo.io/versions/v32.0.0/sdk/facebook/) guide.
-
 Create a `secrets/facebook.js` file with the following content, replacing the `<your-facebook-app-id>` string with your actual app id.
 
 ```js
 export const appId = '<your-facebook-app-id>'
 ```
+
+Then follow the instructions for "The Expo client app" on [this](https://docs.expo.io/versions/v32.0.0/sdk/facebook/) guide.
+
 
 ### Setup Firebase project
 
