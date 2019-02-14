@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Item, Input } from 'native-base';
 import { Keyboard } from 'react-native';
 
-import { addTodo } from '../storage'
+import { addTodo } from '../repository'
 
 export default class CreateTaskComponent extends Component {
 

@@ -20,5 +20,7 @@ export function removeTodo(id) {
 
 _extractTodoListFromSnapshot = snapshot => {
   const tasks = snapshot.val()
-  return Object.keys(tasks).map(key => ({id: key, task: tasks[key].task}))
+  return tasks ? Object.keys(tasks).map(
+      key => ({id: key, task: tasks[key].task})
+    ) : []
 }

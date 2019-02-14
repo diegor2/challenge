@@ -12,7 +12,7 @@ export default class TodoListScreen extends Component {
   }
 
   state = {
-    newTask: false,
+    newTask: false
   }
 
   render() {
