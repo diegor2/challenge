@@ -15,7 +15,8 @@ export default class TodoListComponent extends PureComponent {
   }
 
   componentDidMount(){
-    watchTodoList(list => this.setState({todoList: list, ready: true}))
+    // reverse order so the newer items are higher on the list
+    watchTodoList(list => this.setState({todoList: list.reverse(), ready: true}))
   }
 
   render() {
@@ -46,7 +47,7 @@ export default class TodoListComponent extends PureComponent {
     <EditTaskComponent
       item={item}
       onDelete={this._delete}
-      onEditComplete={this._onEditComplete}/>
+      onComplete={this._onEditComplete}/>
 
 
   _renderViewItem = item =>

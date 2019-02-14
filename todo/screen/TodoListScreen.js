@@ -20,13 +20,24 @@ export default class TodoListScreen extends Component {
       <Container>
         {this._renderCreateTask()}
         <TodoListComponent/>
-        <Fab onPress={this._toggleCreateTask}>
-            <Icon name="add" />
-        </Fab>
+        {this._renderFab()}
       </Container>
     )
   }
 
-  _toggleCreateTask = () => this.setState({newTask: !this.state.newTask})
-  _renderCreateTask = () => this.state.newTask ? <CreateTaskComponent/> : null
+  _enableCreateTask = (enable) => {
+    console.log(`_enableCreateTask ${enable}`);
+    this.setState({newTask: enable})
+  }
+
+  _renderFab = () => this.state.newTask ? null : (
+    <Fab onPress={() => this._enableCreateTask(true)}>
+        <Icon name="add" />
+    </Fab>
+  )
+
+  _renderCreateTask = () => this.state.newTask ? (
+    <CreateTaskComponent
+      onComplete={() => this._enableCreateTask(false)}/>
+   ) : null
 }

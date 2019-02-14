@@ -1,32 +1,19 @@
 import React, { Component } from 'react';
-import { Icon, Item, Input } from 'native-base';
-import { Keyboard } from 'react-native';
 
 import { addTodo } from '../repository'
 
-export default class CreateTaskComponent extends Component {
+import TaskInputComponent from '../components/TaskInputComponent'
 
-  state = {
-    newTask: '',
-  }
+export default class CreateTaskComponent extends Component {
 
   render() {
     return (
-      <Item regular>
-        <Input
-          value={this.state.newTask}
-          placeholder='Nova tarefa'
-          onChangeText={text => this.setState({newTask:text})} />
-        <Icon
-          active name='add-circle'
-          onPress={this._create} />
-      </Item>
+      <TaskInputComponent
+        onComplete={this.props.onComplete}
+        onCancel={this.props.onComplete}
+        placeholder='Nova tarefa'
+        onSubmit={addTodo}
+        icon='add-circle' />
     )
-  }
-
-  _create = () => {
-    addTodo(this.state.newTask)
-    this.setState({newTask: ''})
-    Keyboard.dismiss()
   }
 }

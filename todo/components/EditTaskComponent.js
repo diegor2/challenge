@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
 import { Icon, Item, Input } from 'native-base';
-import { Keyboard } from 'react-native';
+import { Keyboard, View } from 'react-native';
 
 import { editTodo } from '../repository'
 
+import TaskInputComponent from '../components/TaskInputComponent'
+
 export default class EditTaskComponent extends Component {
 
-  state = {
-    newTask: this.props.item.task,
-  }
-
   render() {
-    console.log('EditTaskComponent');
+    const id = this.props.item.id
     return (
-      <Item regular onBlur={this.props.onEditComplete}>
-        <Input
-          value={this.state.newTask}
-          autoFocus={true}
-          onSubmitEditing={this._edit}
-          onChangeText={text => this.setState({newTask: text})} />
-        <Icon
-          active name='checkmark'
-          onPress={this._edit} />
-      </Item>
+      <TaskInputComponent
+        onComplete={this.props.onComplete}
+        onCancel={this.props.onComplete}
+        onSubmit={task => editTodo(id, task)}
+        icon='checkmark' />
     )
-  }
-
-  _edit = () => {
-    console.log('_edit', this.props.item.id, this.state.newTask);
-    editTodo(this.props.item.id, this.state.newTask)
-    Keyboard.dismiss()
-    this.props.onEditComplete()
-  }
+  }  
 }
