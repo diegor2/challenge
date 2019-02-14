@@ -3,13 +3,15 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { Spinner } from 'native-base';
 
 import { addTodo, watchTodoList, removeTodo } from '../repository'
-import TodoListItem from './TodoListItem'
+import TodoListItemComponent from './TodoListItemComponent'
+import EditTaskComponent from './EditTaskComponent'
 
 export default class TodoListComponent extends PureComponent {
 
   state = {
     todoList: [],
-    ready : false
+    ready : false,
+    editingItemId: null
   }
 
   componentDidMount(){
@@ -20,6 +22,7 @@ export default class TodoListComponent extends PureComponent {
     return this.state.ready ? (
         <FlatList
           data={this.state.todoList}
+          extraData={this.state}
           keyExtractor={(item, index) => item.id}
           renderItem={this._renderItem} />
       ) : (
@@ -27,7 +30,31 @@ export default class TodoListComponent extends PureComponent {
       )
     }
 
-  _renderItem = ({item}) => <TodoListItem item={item} onDelete={this._delete}/>
+  _onItemPress = key => {
+    console.log(`_onItemPress ${key}`)
+    this.setState({editingItemId: key})
+  }
+
+  _onEditComplete = () => {
+    this.setState({editingItemId: null})
+  }
+
+  _renderItem = ({item}) => (item.id === this.state.editingItemId) ?
+      this._renderEditItem(item) : this._renderViewItem(item)
+
+  _renderEditItem = item =>
+    <EditTaskComponent
+      item={item}
+      onDelete={this._delete}
+      onEditComplete={this._onEditComplete}/>
+
+
+  _renderViewItem = item =>
+    <TodoListItemComponent
+      item={item}
+      onDelete={this._delete}
+      onPress={() => this._onItemPress(item.id)}/>
+
 
   _delete = id => removeTodo(id)
 

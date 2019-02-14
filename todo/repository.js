@@ -18,6 +18,12 @@ export function removeTodo(id) {
   firebase.database().ref(`users/${user}/tasks/${id}`).remove()
 }
 
+export function editTodo(id, task) {
+  console.log('editTodo', id, task);
+  var user = firebase.auth().currentUser.uid;
+  firebase.database().ref(`users/${user}/tasks/${id}`).set({ task: task })
+}
+
 _extractTodoListFromSnapshot = snapshot => {
   const tasks = snapshot.val()
   return tasks ? Object.keys(tasks).map(

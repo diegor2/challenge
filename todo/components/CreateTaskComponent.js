@@ -13,13 +13,13 @@ export default class CreateTaskComponent extends Component {
   render() {
     return (
       <Item regular>
-      <Input
-      value={this.state.newTask}
-      placeholder='Nova tarefa'
-      onChangeText={text => this.setState({newTask:text})} />
-      <Icon
-      active name='add-circle'
-      onPress={this._create} />
+        <Input
+          value={this.state.newTask}
+          placeholder='Nova tarefa'
+          onChangeText={text => this.setState({newTask:text})} />
+        <Icon
+          active name='add-circle'
+          onPress={this._create} />
       </Item>
     )
   }
