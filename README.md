@@ -1,6 +1,15 @@
 # Reactive Native challenge
 
-## Initial setup before running
+This is a simple TO DO list app made with
+[React Native](https://facebook.github.io/react-native/) and
+[Expo](https://expo.io/).
+It uses [Firebase](https://firebase.google.com/) authentication and realtime database.
+
+To test it using Expo client: https://expo.io/@diegor2/challenge
+
+Android APK release: https://github.com/diegor2/challenge/releases
+
+## Initial setup before building
 
 ### Setup Facebook app
 
